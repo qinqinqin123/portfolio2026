@@ -528,10 +528,14 @@ footer {
 footer button { border: 0; border-bottom: 1px solid; padding: 0 0 4px; background: none; cursor: pointer; }
 
 @media (max-width: 760px) {
-  html { scroll-snap-type: y proximity; }
+  html { scroll-snap-type: none; }
   .site-header { height: 58px; }
   .hero { padding-top: 86px; }
-  .hero h1 { font-size: clamp(82px, 27vw, 150px); line-height: .98; }
+  .hero h1 {
+    font-size: clamp(64px, 22vw, 96px);
+    line-height: .98;
+    white-space: nowrap;
+  }
   .hero-tagline { margin-top: 42px; font-size: 11px; line-height: 1.4; }
   .hero button {
     top: 86px;

@@ -171,6 +171,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 const galleryPlayers = [];
+const galleryAutoplay = window.matchMedia(
+  "(min-width: 761px) and (pointer: fine)"
+);
 
 document.querySelectorAll(".gallery-viewport").forEach((viewport) => {
   const track = viewport.querySelector(".gallery-track");
@@ -234,7 +237,7 @@ document.querySelectorAll(".gallery-viewport").forEach((viewport) => {
     const elapsed = Math.min(time - lastTime, 50);
     lastTime = time;
 
-    if (active && !paused) {
+    if (active && !paused && galleryAutoplay.matches) {
       viewport.scrollLeft += speed * elapsed / 1000;
       const loopPoint = firstSet.offsetWidth;
       if (loopPoint && viewport.scrollLeft >= loopPoint) {
@@ -245,7 +248,7 @@ document.querySelectorAll(".gallery-viewport").forEach((viewport) => {
     requestAnimationFrame(animate);
   }
 
-  requestAnimationFrame(animate);
+  if (galleryAutoplay.matches) requestAnimationFrame(animate);
 
   galleryPlayers.push({
     project: viewport.closest(".project"),
