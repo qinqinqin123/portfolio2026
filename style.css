@@ -1,25 +1,3 @@
-@font-face {
-  font-family: "HarmonyOS Portfolio";
-  src: url("assets/fonts/HarmonyOS_Sans_SC_Light-322997.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "HarmonyOS Portfolio";
-  src: url("assets/fonts/HarmonyOS_Sans_SC_Medium-284152.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "HarmonyOS Portfolio";
-  src: url("assets/fonts/HarmonyOS_Sans_SC_Bold-270678.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --ink: #111;
   --muted: #565656;
@@ -41,7 +19,7 @@ body {
   overflow-x: hidden;
   background: #fff;
   color: var(--ink);
-  font-family: "HarmonyOS Portfolio", "HarmonyOS Sans SC", "PingFang SC", sans-serif;
+  font-family: "HarmonyOS Sans SC", "PingFang SC", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
