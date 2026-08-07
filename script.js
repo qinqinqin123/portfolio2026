@@ -99,7 +99,7 @@ app.innerHTML = `
   <section class="overview" id="overview">
     <p class="eyebrow">Selected Work · ${escapeHTML(data.profile.year)}</p>
     <ol>${data.sections.map((item) => `
-      <li><button data-jump="${escapeHTML(item.id)}"><span>${escapeHTML(item.number)}</span><strong>${escapeHTML(item.title)}</strong><span>↘</span></button></li>
+      <li><button data-jump="${escapeHTML(item.id)}"><span>${escapeHTML(item.number)}</span><strong>${escapeHTML(item.title)}</strong><span class="overview-arrow" aria-hidden="true">↘︎</span></button></li>
     `).join("")}</ol>
   </section>
   ${data.sections.map(section).join("")}

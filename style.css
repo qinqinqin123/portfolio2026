@@ -49,8 +49,23 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-.index-trigger { display: flex; gap: 18px; align-items: center; }
-.index-trigger span { font-size: 19px; font-weight: 500; }
+.index-trigger {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  align-items: center;
+  white-space: nowrap;
+}
+.index-trigger span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1;
+}
 
 .index-panel {
   position: fixed;
@@ -111,6 +126,14 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   inset: 0;
   border: 0;
   background: rgba(0,0,0,.18);
+}
+
+.overview-arrow {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-variant-emoji: text;
+  line-height: 1;
 }
 
 .hero {
@@ -508,6 +531,8 @@ footer button { border: 0; border-bottom: 1px solid; padding: 0 0 4px; backgroun
 @media (max-width: 760px) {
   html { scroll-snap-type: none; }
   .site-header { height: 58px; }
+  .index-trigger { gap: 12px; }
+  .index-trigger span { width: 18px; height: 18px; }
   .hero { padding-top: 86px; }
   .hero h1 {
     font-size: clamp(64px, 22vw, 96px);
@@ -519,8 +544,9 @@ footer button { border: 0; border-bottom: 1px solid; padding: 0 0 4px; backgroun
     top: 86px;
     transform: none;
   }
-  .overview button { grid-template-columns: 42px 1fr auto; }
+  .overview button { grid-template-columns: 42px 1fr 18px; }
   .overview strong { font-size: clamp(38px, 12vw, 64px); }
+  .overview-arrow { justify-self: end; font-size: 15px; }
   .discipline-header { display: block; min-height: 68svh; padding-top: 100px; }
   .discipline-header > span { display: block; margin-bottom: 70px; }
   .discipline-header p { margin-top: 40px; }
