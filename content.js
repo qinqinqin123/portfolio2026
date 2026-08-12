@@ -9,7 +9,7 @@
 
 window.PORTFOLIO = {
   profile: {
-    name: "Qin Yang 杨沁",
+    name: "Qin Yang",
     role: "Visual Designer",
     tagline: "Brand · Information · Engagement",
     intro: "通过品牌、信息与传播设计，帮助企业在不同媒介与利益相关方之间建立清晰、一致的沟通体验。",
