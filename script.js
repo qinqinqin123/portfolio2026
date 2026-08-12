@@ -70,7 +70,7 @@ const section = (item) => `
 
 app.innerHTML = `
   <header class="site-header">
-    <button data-jump="top" class="brand">${escapeHTML(data.profile.name)}</button>
+    <button data-jump="top" class="brand">${escapeHTML(data.profile.name)} <span lang="zh-CN">/ ${escapeHTML(data.profile.nameZh)}</span></button>
     <button class="index-trigger" aria-expanded="false">Index / 目录 <span aria-hidden="true">＋</span></button>
   </header>
   <nav class="index-panel" aria-hidden="true">
@@ -92,8 +92,10 @@ app.innerHTML = `
     <p class="hero-role">${escapeHTML(data.profile.role)}</p>
     <div class="hero-name">
       <h1 aria-label="${escapeHTML(data.profile.name)}">
-        <span class="hero-word"><span>Qin</span></span>
-        <span class="hero-word"><span>Yang</span></span>
+        <span class="hero-line hero-line-en">
+          <span class="hero-word hero-word-q"><span>Qin</span></span>
+          <span class="hero-word"><span>Yang</span></span>
+        </span>
       </h1>
       <p class="hero-tagline"><span>${escapeHTML(data.profile.tagline)}</span></p>
     </div>

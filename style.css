@@ -49,6 +49,11 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   letter-spacing: .04em;
   text-transform: uppercase;
 }
+.brand span {
+  margin-left: .3em;
+  font-family: "HarmonyOS Sans SC", "PingFang SC", sans-serif;
+  letter-spacing: .06em;
+}
 .index-trigger {
   display: inline-flex;
   flex-wrap: nowrap;
@@ -163,15 +168,21 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   padding-bottom: 0;
 }
 .hero h1 {
-  display: flex;
-  align-items: baseline;
-  gap: .075em;
+  display: block;
   margin: 0;
   font-size: clamp(92px, 19vw, 350px);
   font-weight: 500;
   line-height: .76;
   letter-spacing: -.075em;
+}
+.hero-line {
+  display: block;
   white-space: nowrap;
+}
+.hero-line-en {
+  display: flex;
+  align-items: baseline;
+  gap: .075em;
 }
 .hero-word {
   display: block;
@@ -181,7 +192,7 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   display: block;
   will-change: transform, opacity;
 }
-.hero-word:first-child > span {
+.hero-word-q > span {
   /* Arial's Q has visible left side-bearing; compensate optically. */
   margin-left: -.035em;
 }
@@ -567,7 +578,8 @@ footer button { border: 0; border-bottom: 1px solid; padding: 0 0 4px; backgroun
     line-height: .92;
     white-space: normal;
   }
-  .hero-word + .hero-word { margin-top: 10px; }
+  .hero-line-en { display: block; }
+  .hero-line-en .hero-word + .hero-word { margin-top: 10px; }
   .hero-tagline {
     margin-top: clamp(30px, 4.5vh, 46px);
     font-size: clamp(8px, 2.62vw, 11px);
