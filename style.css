@@ -163,11 +163,27 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   padding-bottom: 0;
 }
 .hero h1 {
+  display: flex;
+  align-items: baseline;
+  gap: .075em;
   margin: 0;
   font-size: clamp(92px, 19vw, 350px);
   font-weight: 500;
   line-height: .76;
   letter-spacing: -.075em;
+  white-space: nowrap;
+}
+.hero-word {
+  display: block;
+  overflow: visible;
+}
+.hero-word > span {
+  display: block;
+  will-change: transform, opacity;
+}
+.hero-word:first-child > span {
+  /* Arial's Q has visible left side-bearing; compensate optically. */
+  margin-left: -.035em;
 }
 .hero-tagline {
   margin: clamp(66px, 8vh, 92px) 0 0;
@@ -177,6 +193,17 @@ button:focus-visible, a:focus-visible { outline: 1px solid #111; outline-offset:
   line-height: 1.25;
   letter-spacing: .055em;
   text-transform: uppercase;
+}
+.hero-tagline > span { display: block; will-change: transform, opacity; }
+.motion-pending .hero-word > span {
+  opacity: 0;
+  transform: translateY(.68em);
+  clip-path: inset(68% 0 -32% 0);
+}
+.motion-pending .hero-role,
+.motion-pending .hero-tagline > span {
+  opacity: 0;
+  transform: translateY(70%);
 }
 .hero button {
   position: absolute;
@@ -535,11 +562,19 @@ footer button { border: 0; border-bottom: 1px solid; padding: 0 0 4px; backgroun
   .index-trigger span { width: 18px; height: 18px; }
   .hero { padding-top: 86px; }
   .hero h1 {
-    font-size: clamp(64px, 22vw, 96px);
-    line-height: .98;
+    display: block;
+    font-size: clamp(122px, 36vw, 162px);
+    line-height: .92;
+    white-space: normal;
+  }
+  .hero-word + .hero-word { margin-top: 10px; }
+  .hero-tagline {
+    margin-top: clamp(30px, 4.5vh, 46px);
+    font-size: clamp(8px, 2.62vw, 11px);
+    line-height: 1.4;
+    letter-spacing: .035em;
     white-space: nowrap;
   }
-  .hero-tagline { margin-top: 42px; font-size: 11px; line-height: 1.4; }
   .hero button {
     top: 86px;
     transform: none;

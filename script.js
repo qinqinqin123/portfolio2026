@@ -91,8 +91,11 @@ app.innerHTML = `
   <section class="hero" id="top">
     <p class="hero-role">${escapeHTML(data.profile.role)}</p>
     <div class="hero-name">
-      <h1>${escapeHTML(data.profile.name)}</h1>
-      <p class="hero-tagline">${escapeHTML(data.profile.tagline)}</p>
+      <h1 aria-label="${escapeHTML(data.profile.name)}">
+        <span class="hero-word"><span>Qin</span></span>
+        <span class="hero-word"><span>Yang</span></span>
+      </h1>
+      <p class="hero-tagline"><span>${escapeHTML(data.profile.tagline)}</span></p>
     </div>
     <button data-jump="overview">Scroll to view <span>↓</span></button>
   </section>
@@ -123,6 +126,61 @@ app.innerHTML = `
     </button>
   </div>
 `;
+
+/*
+ * Homepage entrance motion. GSAP provides the primary timing; the Web
+ * Animations fallback preserves the same quick-start / slow-finish reveal if
+ * the CDN is unavailable.
+ */
+function playHeroEntrance() {
+  const words = [...document.querySelectorAll(".hero-word > span")];
+  const supporting = [
+    document.querySelector(".hero-role"),
+    document.querySelector(".hero-tagline > span"),
+  ].filter(Boolean);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const duration = reduceMotion ? 720 : 1480;
+
+  if (window.gsap) {
+    const timeline = window.gsap.timeline({
+      onComplete: () => document.documentElement.classList.remove("motion-pending"),
+    });
+    timeline
+      .to(words, {
+        y: 0,
+        autoAlpha: 1,
+        clipPath: "inset(-18% 0 -32% 0)",
+        duration: duration / 1000,
+        stagger: 0.12,
+        ease: "expo.out",
+      }, 0.08)
+      .to(supporting, {
+        y: 0,
+        autoAlpha: 1,
+        duration: duration * 0.68 / 1000,
+        stagger: 0.05,
+        ease: "power4.out",
+      }, 0.16);
+    return;
+  }
+
+  const easing = "cubic-bezier(.16, 1, .3, 1)";
+  const animations = [];
+  words.forEach((element, index) => animations.push(element.animate([
+    { transform: "translateY(.68em)", opacity: 0, clipPath: "inset(68% 0 -32% 0)" },
+    { transform: "translateY(0)", opacity: 1, clipPath: "inset(-18% 0 -32% 0)" },
+  ], { duration, delay: 80 + index * 120, easing, fill: "forwards" })));
+  supporting.forEach((element, index) => animations.push(element.animate([
+    { transform: "translateY(70%)", opacity: 0 },
+    { transform: "translateY(0)", opacity: 1 },
+  ], { duration: duration * 0.68, delay: 160 + index * 50, easing, fill: "forwards" })));
+  Promise.all(animations.map((animation) => animation.finished)).then(() => {
+    document.documentElement.classList.remove("motion-pending");
+    animations.forEach((animation) => animation.cancel());
+  });
+}
+
+requestAnimationFrame(() => requestAnimationFrame(playHeroEntrance));
 
 const header = document.querySelector(".site-header");
 const trigger = document.querySelector(".index-trigger");
